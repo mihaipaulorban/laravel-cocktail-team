@@ -1,0 +1,16 @@
+// SCSS BOOTSTRAP
+@import "~bootstrap/scss/bootstrap";
+
+// FILE PARTIALS
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/header";
+@import "partials/footer";
+@import "partials/main";
+@import "partials/common";
+
+// STILI
+body {
+    background-color: rgb(38, 38, 38);
+    color: rgb(225, 225, 225);
+}

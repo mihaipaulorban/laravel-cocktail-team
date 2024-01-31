@@ -11,23 +11,28 @@
     <title>Laravel Cocktails</title>
 </head>
 
-<body class="d-flex vh-100 justify-content-center align-items-center">
-    <div class="container text-center">
-        <div>
-            <h1 class="display-1">Laravel Cocktails</h1>
-        </div>
-        <ul>
+<body>
+
+    <header>
+        <h1 class="text-center text-uppercase ">i miei cocktail</h1>
+    </header>
+    <main>
+        <div class="container d-flex gap-4">
             @foreach ($cocktails as $cocktail)
-                <li>{{ $cocktail['name'] }}</li>
+                <div class="card" style="width: 18rem;">
+                    <img src={{ $cocktail['img'] }} class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $cocktail['name'] }}</h5>
+                        <p class="card-text">{{ $cocktail['ingredients'] }}</p>
+                        <a href="#" class="btn btn-primary">Ordina</a>
+                    </div>
+                </div>
             @endforeach
-        </ul>
-
-    </div>
-
-    {{-- Questa é la sintassi per includere immagini dopo la compressione di vite --}}
-
-    {{-- <img src="{{ Vite::asset ('resources/img/logo-png') }}" alt=""> --}}
-
+        </div>
+    </main>
 </body>
 
 </html>
+{{-- Questa é la sintassi per includere immagini dopo la compressione di vite --}}
+
+{{-- <img src="{{ Vite::asset ('resources/img/logo-png') }}" alt=""> --}}

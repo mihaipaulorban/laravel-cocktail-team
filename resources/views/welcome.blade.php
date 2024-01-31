@@ -17,7 +17,7 @@
         <h1 class="text-center text-uppercase ">i miei cocktail</h1>
     </header>
     <main>
-        <div class="container d-flex gap-4">
+        <div class="container d-flex gap-4 flex-wrap">
             @foreach ($cocktails as $cocktail)
                 <div class="card" style="width: 18rem;">
                     <img src={{ $cocktail['img'] }} class="card-img-top" alt="...">

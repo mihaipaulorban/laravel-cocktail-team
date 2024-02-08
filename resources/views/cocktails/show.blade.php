@@ -13,6 +13,7 @@
                     <p>Analcolico</p>
                 @endif
                 <a href="{{ route('cocktails.index') }}" class="btn btn-primary">Torna alla lista</a>
+                <a class="btn btn-primary my-3" href="{{ route('cocktails.edit', $cocktail) }}">Modifica il Cocktail</a>
             </div>
         </div>
     </div>

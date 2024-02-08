@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 // Controller per la pagina dei cocktail
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCocktailRequest;
+use App\Http\Requests\UpdateCocktailsRequest;
 // Model 
 use App\Models\Cocktail;
 
@@ -56,17 +57,19 @@ class CocktailsResController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Cocktail $cocktail)
     {
-        //
+        return view('cocktails.edit', compact('cocktail'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCocktailsRequest $request, Cocktail $cocktail)
     {
-        //
+        $data = $request->validated();
+        $cocktail->update($data);
+        return redirect()->route('cocktails.index');
     }
 
     /**

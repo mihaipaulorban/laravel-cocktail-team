@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Guest\CocktailsController;
+use App\Http\Controllers\Guest\CocktailsResController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CocktailsController::class,'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('cocktails', CocktailsResController::class);

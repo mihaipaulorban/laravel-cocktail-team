@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 // Controller per la pagina dei cocktail
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\StoreCocktailRequest;
 // Model 
 use App\Models\Cocktail;
 
@@ -25,15 +25,23 @@ class CocktailsResController extends Controller
      */
     public function create()
     {
-        //
+        return view('cocktails.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCocktailRequest $request)
     {
-        //
+
+
+        $data = $request->validated();
+        $newcocktail = new Cocktail();
+        $newcocktail->fill($data);
+
+        $newcocktail->save();
+
+        return redirect()->route('cocktails.index');
     }
 
     /**

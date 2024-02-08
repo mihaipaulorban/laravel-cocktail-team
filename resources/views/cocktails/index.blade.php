@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $cocktail['name'] }}</h5>
                     <p class="card-text">{{ $cocktail['ingredients'] }}</p>
-                    <a href="#" class="btn btn-primary">Ordina</a>
+                    <a href="{{ route('cocktails.show', $cocktail) }}" class="btn btn-primary">Mostra</a>
                 </div>
             </div>
         @endforeach

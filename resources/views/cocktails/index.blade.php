@@ -8,7 +8,11 @@
                 <img src={{ $cocktail['img'] }} class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $cocktail['name'] }}</h5>
-                    <p class="card-text">{{ $cocktail['ingredients'] }}</p>
+                    {{-- @if ($cocktail->ingredient['name'])
+                        <p class="card-text">{{ $cocktail->ingredient->name }}</p>
+                    @else
+                        <p>nessun ingrediente</p>
+                    @endif --}}
                     <a href="{{ route('cocktails.show', $cocktail) }}" class="btn btn-primary my-2">Mostra</a>
                     <form action="{{ route('cocktails.destroy', $cocktail) }}" method="POST">
                         @csrf

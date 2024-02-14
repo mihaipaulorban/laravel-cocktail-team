@@ -13,18 +13,25 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label for="ingredients" class="form-label">Ingredienti</label>
-                <input type="text" class="form-control @error('ingredients') is-invalid @enderror" id="ingredients"
-                    name="ingredients" value="{{ old('ingredients') }}">
-            </div>
-            @error('ingredients')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="mb-3">
                 <label for="alcolico" class="form-label">Analcolico</label>
                 <input type="checkbox" name="alcolico" id="alcolico" value="0">
             </div>
             @error('alcolico')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="mb-3">
+                @foreach ($ingredients as $ingredient)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="{{ $ingredient->id }}" name="ingredients[]"
+                            id="ingredient-{{ $ingredient->id }}"
+                            {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label"
+                            for="ingredient-{{ $ingredient->id }}">{{ $ingredient->name }}</label>
+                    </div>
+                @endforeach
+            </div>
+
+            @error('ingredients')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">

@@ -8,7 +8,7 @@ use App\Http\Requests\StoreCocktailRequest;
 use App\Http\Requests\UpdateCocktailsRequest;
 // Model 
 use App\Models\Cocktail;
-
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class CocktailsResController extends Controller
@@ -17,8 +17,9 @@ class CocktailsResController extends Controller
     // Rimanda alla pagina dei cocktail
     public function index()
     {
+        $ingredients = Ingredient::all();
         $cocktails = Cocktail::all();
-        return view('cocktails.index', compact('cocktails'));
+        return view('cocktails.index', compact('cocktails', 'ingredients'));
     }
 
     /**
@@ -26,7 +27,9 @@ class CocktailsResController extends Controller
      */
     public function create()
     {
-        return view('cocktails.create');
+        $ingredients = Ingredient::all();
+
+        return view('cocktails.create', compact('ingredients'));
     }
 
     /**
@@ -41,6 +44,10 @@ class CocktailsResController extends Controller
         $newcocktail->fill($data);
 
         $newcocktail->save();
+
+        if (isset($data['ingredients'])) {
+            $newcocktail->ingredients()->sync($data['ingredients']);
+        }
 
         return redirect()->route('cocktails.index');
     }
@@ -59,7 +66,8 @@ class CocktailsResController extends Controller
      */
     public function edit(Cocktail $cocktail)
     {
-        return view('cocktails.edit', compact('cocktail'));
+        $ingredients = Ingredient::all();
+        return view('cocktails.edit', compact('cocktail', 'ingredients'));
     }
 
     /**
@@ -69,6 +77,11 @@ class CocktailsResController extends Controller
     {
         $data = $request->validated();
         $cocktail->update($data);
+        if (isset($data['ingredients'])) {
+            $cocktail->ingredients()->sync($data['ingredients']);
+        } else {
+            $cocktail->ingredients()->sync([]);
+        }
         return redirect()->route('cocktails.index');
     }
 

@@ -23,9 +23,9 @@ class StoreCocktailRequest extends FormRequest
     {
         return [
             'name' => 'required|max:20',
-            'ingredients' => 'required|max:100',
             'img' => 'required|max:500',
-            'alcolico' => 'nullable'
+            'alcolico' => 'nullable',
+            'ingredients' => ['nullable', 'exists:ingredients,id']
         ];
     }
 }

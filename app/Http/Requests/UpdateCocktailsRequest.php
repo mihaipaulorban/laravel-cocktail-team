@@ -25,8 +25,7 @@ class UpdateCocktailsRequest extends FormRequest
             'name' => 'required|max:20',
             'img' => 'required|max:500',
             'alcolico' => 'nullable',
-            'ingredients' => ['nullable', 'exists:ingredients,id']
-
+            'ingredients' => ['nullable', 'exists:ingredients,id'],
         ];
     }
 }

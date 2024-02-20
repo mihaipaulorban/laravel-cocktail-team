@@ -57,8 +57,9 @@ class CocktailsResController extends Controller
      */
     public function show(string $id)
     {
+        $ingredients = Ingredient::all();
         $cocktail = Cocktail::findOrFail($id);
-        return view('cocktails.show', compact('cocktail'));
+        return view('cocktails.show', compact('cocktail', 'ingredients'));
     }
 
     /**

@@ -1,18 +1,16 @@
 @extends('layouts.app')
 
 @section('main')
+   <div>
     <a href="{{ route('cocktails.create') }}" class="btn btn-primary btn-sm">Crea il tuo cocktail</a>
+    <a href="{{ route('ingredients.index') }}" class="btn btn-primary btn-sm">Aggiungi un ingrediente</a>
+   </div>
     <div class="container d-flex gap-4 flex-wrap mt-4">
         @foreach ($cocktails as $cocktail)
             <div class="card" style="width: 18rem;">
                 <img src={{ $cocktail['img'] }} class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $cocktail['name'] }}</h5>
-                    {{-- @if ($cocktail->ingredient['name'])
-                        <p class="card-text">{{ $cocktail->ingredient->name }}</p>
-                    @else
-                        <p>nessun ingrediente</p>
-                    @endif --}}
                     <a href="{{ route('cocktails.show', $cocktail) }}" class="btn btn-primary my-2">Mostra</a>
                     <form action="{{ route('cocktails.destroy', $cocktail) }}" method="POST">
                         @csrf

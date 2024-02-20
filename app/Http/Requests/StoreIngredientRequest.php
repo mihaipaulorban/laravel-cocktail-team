@@ -11,7 +11,7 @@ class StoreIngredientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreIngredientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['nullable','max:25', 'unique:ingredients,name'],
+            'slug'=> 'nullable',
         ];
     }
 }

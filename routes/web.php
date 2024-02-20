@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Guest\CocktailsResController;
+use App\Http\Controllers\Guest\IngredientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('cocktails', CocktailsResController::class);
+Route::resource('ingredients', IngredientController::class);

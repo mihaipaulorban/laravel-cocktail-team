@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('main')
-   <div>
-    <a href="{{ route('cocktails.create') }}" class="btn btn-primary btn-sm">Crea il tuo cocktail</a>
-    <a href="{{ route('ingredients.index') }}" class="btn btn-primary btn-sm">Aggiungi un ingrediente</a>
-   </div>
+    <div>
+        <a href="{{ route('cocktails.create') }}" class="btn btn-primary btn-sm">Crea il tuo cocktail</a>
+        <a href="{{ route('ingredients.index') }}" class="btn btn-primary btn-sm">Aggiungi un ingrediente</a>
+    </div>
     <div class="container d-flex gap-4 flex-wrap mt-4">
         @foreach ($cocktails as $cocktail)
             <div class="card p-4" style="width: 18rem;">
@@ -23,7 +23,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header bg-danger text-light">
-                                        <h1 class="modal-title fs-5" id="modalLabel{{ $loop->iteration }}">Sei
+                                        <h1 class="modal-title fs-5 text-white " id="modalLabel{{ $loop->iteration }}">Sei
                                             sicuro
                                             di voler cancellare
                                             il cocktail '{{ $cocktail->name }}'?</h1>
